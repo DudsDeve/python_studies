@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Mapa Interativo com Destaque</title>
+    <style>
+      .container {
+        position: relative;
+        display: inline-block;
+      }
+
+      #mapa {
+        max-width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      .marcador {
+        position: absolute;
+        left: 50px;
+        top: 50px;
+        width: 100px; /* 150 - 50 */
+        height: 100px;
+        border: 2px solid green;
+        background-color: rgba(
+          0,
+          255,
+          0,
+          0.2
+        ); /* fundo verde com transparência */
+        pointer-events: none; /* para não atrapalhar o clique na área */
+      }
+
+      .info {
+        margin-top: 20px;
+        font-size: 18px;
+        font-weight: bold;
+        color: #333;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>🗺️ Mapa Interativo com Destaque</h1>
+
+    <div class="container">
+      <img src="mapa.png" usemap="#mapaShopping" id="mapa" alt="Mapa" />
+
+      <!-- Marcador verde na coordenada desejada -->
+      <div class="marcador"></div>
+    </div>
+
+    <map name="mapaShopping">
+      <area
+        shape="rect"
+        coords="50,50,150,150"
+        alt="Loja Teste"
+        href="#"
+        onclick="mostrarInfo('Loja Teste')"
+      />
+    </map>
+
+    <div class="info" id="info"></div>
+
+    <script>
+      function mostrarInfo(loja) {
+        document.getElementById("info").innerText = `Você clicou na ${loja}`;
+      }
+    </script>
+  </body>
+</html>
